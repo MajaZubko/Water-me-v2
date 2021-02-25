@@ -8,6 +8,7 @@ import { User } from './users.types';
 
 function* fetchUsers(action: PromiseAction<void, User[]>) {
   try {
+    // @ts-ignore
     const data = yield users.list();
     yield resolvePromiseAction(action, data);
   } catch (error) {

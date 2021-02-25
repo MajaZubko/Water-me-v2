@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { Route, Router } from 'react-router';
 import { IntlProvider } from 'react-intl';
-import produce from 'immer';
+import { produce } from 'immer';
 
 import { DEFAULT_LOCALE, translationMessages, MessagesObject } from '../../i18n';
 import { store as fixturesStore } from '../../mocks/store';
