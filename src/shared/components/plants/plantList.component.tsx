@@ -107,32 +107,6 @@ export const PlantsList = () => {
           </StyledAccordion>
         ))}
       </>
-
-      {/*<List>*/}
-      {/*  <li>*/}
-      {/*    <ListHeader>*/}
-      {/*      */}
-      {/*    </ListHeader>*/}
-      {/*    <ListHeader>*/}
-      {/*      */}
-      {/*    </ListHeader>*/}
-      {/*    <ListHeader>*/}
-      {/*      */}
-      {/*    </ListHeader>*/}
-      {/*    <ListHeader>*/}
-      {/*      <FormattedMessage id="lastWatered" defaultMessage="Last watered" description="Last watered / Header" />*/}
-      {/*    </ListHeader>*/}
-      {/*  </li>*/}
-      {/*  {sortBy(plants, 'name').map((plant, i) => (*/}
-      {/*    <li key={i}>*/}
-      {/*      <div>{plant.name}</div>*/}
-      {/*      <div>{plant.location}</div>*/}
-      {/*      <div>{plant.waterNeeds}</div>*/}
-      {/*      <div>{plant.lastWatered}</div>*/}
-      {/*
-      {/*    </li>*/}
-      {/*  ))}*/}
-      {/*</List>*/}
     </Container>
   );
 };
