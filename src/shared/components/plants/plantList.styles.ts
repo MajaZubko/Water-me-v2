@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
+import { Accordion, AccordionDetails, Button } from '@material-ui/core';
 
 export const Container = styled.div`
   display: flex;
@@ -24,21 +24,26 @@ export const IconButton = styled.div`
   }
 `;
 
-export const List = styled.ul`
-  list-style-type: none;
-  margin-top: 16px;
-  margin-right: 20px;
-  padding: 0;
-  li {
-    display: grid;
-    grid-template-columns: repeat(4, 180px) repeat(3, 40px);
-    text-align: start;
-    padding-bottom: 4px;
+export const StyledAccordion = styled(Accordion)`
+  && {
+    text-align: left;
+    width: 80vw;
   }
 `;
 
-export const ListHeader = styled.div`
-  text-transform: uppercase;
-  font-weight: bold;
-  padding-bottom: 8px;
+export const StyledAccordionDetails = styled(AccordionDetails)`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ButtonSection = styled.div`
+  display: flex;
+  margin-left: auto;
+`;
+
+export const Detail = styled.div`
+  text-align: left;
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
 `;

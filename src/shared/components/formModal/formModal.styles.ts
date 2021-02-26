@@ -9,7 +9,8 @@ export const Container = styled.div`
 
 export const StyledInput = styled(Input)`
   && {
-    width: 350px;
+    min-width: 30vw;
+    max-width: 80vw;
     input {
       padding: 4px 0;
     }
@@ -27,7 +28,7 @@ export const StyledButton = styled(Button)`
 `;
 
 export const ModalBody = styled.div`
-  width: 350px;
+  max-width: 80vw;
   display: flex;
   flex-direction: column;
 `;
