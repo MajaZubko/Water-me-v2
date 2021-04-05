@@ -23,6 +23,9 @@ const MatchedLanguageComponent = () => {
         <Route exact path={`${match.path}${ROUTES.allPlants}`}>
           <AllPlants />
         </Route>
+        <Route exact path={`${match.path}${ROUTES.encyclopedia}`}>
+          <AllPlants />
+        </Route>
         <Route>
           <NotFound />
         </Route>
