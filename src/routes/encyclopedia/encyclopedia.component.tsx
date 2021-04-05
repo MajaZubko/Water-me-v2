@@ -1,5 +1,6 @@
 import React from 'react';
 import { CardContent } from '@material-ui/core';
+import { SpinningLoader } from '../../shared/components/spinningLoader';
 import {
   Container,
   LatinName,
@@ -16,12 +17,20 @@ import { EncyclopediaPlant } from './encyclopedia.types';
 export const Encyclopedia = () => {
   const { data, isFetching }: { data?: EncyclopediaPlant[]; isFetching: boolean } = useGetPlants();
 
+  if (isFetching) {
+    return (
+      <Container>
+        <SpinningLoader />
+      </Container>
+    );
+  }
+
   return (
     <Container>
       {!!data &&
         data.map((plant) => (
-          <StyledCard>
-            <CardContent key={plant.id}>
+          <StyledCard key={plant.id}>
+            <CardContent>
               <PlantName>{plant.name}</PlantName>
               <LatinName>{plant.latinName}</LatinName>
               <NeedsContainer>
