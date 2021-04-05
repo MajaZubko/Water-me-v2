@@ -1,9 +1,17 @@
 import styled from 'styled-components';
+import { Card } from '@material-ui/core';
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 24px;
+`;
+
+export const StyledCard = styled(Card)`
+  min-width: 400px;
+  margin: 8px 8px;
 `;
 
 export const PlantName = styled.h3``;
@@ -16,8 +24,16 @@ export const NeedsContainer = styled.div`
   display: flex;
 `;
 
-export const WaterNeed = styled.div`
-  margin-right: 16px;
+export const NeedLabel = styled.div`
+  font-weight: bold;
+  white-space: break-spaces;
 `;
 
-// export const Dimension
+export const WaterNeed = styled.div`
+  margin-right: 16px;
+  display: flex;
+`;
+
+export const SunNeed = styled.div`
+  display: flex;
+`;
