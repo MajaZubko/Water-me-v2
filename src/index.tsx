@@ -8,6 +8,7 @@ import 'regenerator-runtime/runtime';
 // Import all the third party stuff
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
+import { QueryClient, QueryClientProvider } from 'react-query';
 // @ts-ignore
 import FontFaceObserver from 'fontfaceobserver';
 import 'normalize.css/normalize.css';
@@ -42,13 +43,17 @@ const store = configureStore(initialState);
 const render = (): void => {
   const NextApp = require('./routes').default;
 
+  const queryClient = new QueryClient();
+
   Modal.setAppElement('#app');
 
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={browserHistory}>
-        <NextApp />
-      </Router>
+      <QueryClientProvider client={queryClient}>
+        <Router history={browserHistory}>
+          <NextApp />
+        </Router>
+      </QueryClientProvider>
     </Provider>,
     document.getElementById('app')
   );

@@ -12,9 +12,12 @@ export const Navbar = () => {
 
   const language = useSelector(localesSelectors.selectLocalesLanguage);
 
+  const route = (ROUTE: string): string => `/${language || 'en'}${ROUTE}`;
+
   const PATHS = {
-    calendar: `/${language || 'en'}${ROUTES.calendar}`,
-    allPlants: `/${language || 'en'}${ROUTES.allPlants}`,
+    calendar: route(ROUTES.calendar),
+    allPlants: route(ROUTES.allPlants),
+    encyclopedia: route(ROUTES.encyclopedia),
   };
 
   const handleLinkClick = () => {
@@ -43,6 +46,13 @@ export const Navbar = () => {
         </NavbarLink>
         <NavbarLink to={PATHS.allPlants} onClick={handleLinkClick} active={isActiveRoute(PATHS.allPlants)}>
           <FormattedMessage id="allPlantsLink" defaultMessage="List of plants" description="All plants / Link" />
+        </NavbarLink>
+        <NavbarLink to={PATHS.encyclopedia} onClick={handleLinkClick} active={isActiveRoute(PATHS.encyclopedia)}>
+          <FormattedMessage
+            id="encyclopediaLink"
+            defaultMessage="Plant encyclopedia"
+            description="Plant encyclopedia / Link"
+          />
         </NavbarLink>
       </LinksSection>
     </Container>
