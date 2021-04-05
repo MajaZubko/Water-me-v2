@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { translationMessages } from '../i18n';
 import { GlobalStyle } from '../theme/global';
 import { localesSelectors } from '../modules/locales';
+import { Navbar } from '../shared/components/navbar';
 import { useStartup } from './useStartup';
 import { useLanguageFromParams } from './useLanguageFromParams';
 
@@ -30,7 +31,7 @@ export const AppComponent = ({ children }: AppComponentProps) => {
           <FormattedMessage id="pageTitle" defaultMessage="Water me" description="App / Page title">
             {([pageTitle]: [string]) => <Helmet titleTemplate={`%s - ${pageTitle}`} defaultTitle={pageTitle} />}
           </FormattedMessage>
-
+          <Navbar />
           <GlobalStyle />
           {React.Children.only(children)}
         </Fragment>

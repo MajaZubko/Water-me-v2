@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const StyledButton = styled(Button)`
   && {
-    margin-top: 20px;
+    margin: 8px 0;
   }
 `;
 

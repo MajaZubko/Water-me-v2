@@ -16,10 +16,6 @@ export const H2 = styled.h2`
   color: ${colors.black};
 `;
 
-export const Link = styled.a`
-  text-decoration: underline;
-`;
-
 export const StyledLink = styled(RouterLink)`
   margin-bottom: 16px;
   text-decoration: none;
