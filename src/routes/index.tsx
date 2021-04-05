@@ -17,7 +17,7 @@ const MatchedLanguageComponent = () => {
   return (
     <App>
       <Switch>
-        <Route exact path={`${match.path}${ROUTES.home}`}>
+        <Route exact path={`${match.path}${ROUTES.calendar}`}>
           <Home />
         </Route>
         <Route exact path={`${match.path}${ROUTES.allPlants}`}>
