@@ -35,7 +35,7 @@ export default () => {
   return (
     <Switch>
       <Route exact path="/">
-        <Redirect to={DEFAULT_LOCALE} />
+        <Redirect to={`${DEFAULT_LOCALE}/calendar`} />
       </Route>
 
       <Route path={`/:lang(${appLocales.join('|')})`}>

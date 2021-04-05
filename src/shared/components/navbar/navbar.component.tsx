@@ -17,7 +17,7 @@ export const Navbar = () => {
         <Logo />
       </Heading>
       <LinksSection>
-        <StyledLink to={`/${language || 'en'}`}>
+        <StyledLink to={`/${language || 'en'}/calendar`}>
           <FormattedMessage
             id="wateringCalendarLink"
             defaultMessage="Watering calendar"
