@@ -22,6 +22,8 @@ export const Link = styled.a`
 
 export const StyledLink = styled(RouterLink)`
   margin-bottom: 16px;
+  margin-right: 8px;
+  margin-left: 8px;
   text-decoration: none;
   color: ${colors.plantGreen};
 `;
