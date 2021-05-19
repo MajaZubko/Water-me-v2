@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import Menu from '@material-ui/icons/Menu';
+import { plantGreen } from '../../../theme/color';
 import { ReactComponent as LogoSVG } from '../../../images/icons/logo.svg';
 
-export const Container = styled.div`
+export const Container = styled.nav`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,8 +12,16 @@ export const Container = styled.div`
   margin-bottom: 20px;
 `;
 
-export const LinksSection = styled.div`
+type LinksSectionProps = {
+  isMenuOpened: boolean;
+};
+
+export const LinksSection = styled.section<LinksSectionProps>`
   display: flex;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 
 export const Logo = styled(LogoSVG)`
@@ -21,4 +31,8 @@ export const Logo = styled(LogoSVG)`
 export const Heading = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const MenuIcon = styled(Menu)`
+  color: ${plantGreen};
 `;

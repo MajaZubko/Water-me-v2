@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import { FormattedMessage } from 'react-intl';
 
 import { Plant } from '../../../modules/plants/plants.types';
+import { emptyPlant } from '../plants';
 import {
   ButtonsContainer,
   Container,
@@ -159,17 +160,19 @@ export const FormModal = ({ isOpen, onClose, plant, action, onlyWatering, button
             <StyledButton
               type="submit"
               onClick={() => {
-                if (!plant.id) {
-                  setFormValues({ ...formValues, id: uuidv4() });
+                let tempPlant: Plant = { ...formValues };
+                if (!tempPlant.id) {
+                  tempPlant = { ...tempPlant, id: uuidv4() };
                 }
-                setFormValues({
-                  ...formValues,
+                tempPlant = {
+                  ...tempPlant,
                   nextWatering: moment(formValues.lastWatered)
                     .clone()
                     .add(formValues.waterNeeds, 'days')
                     .format('YYYY-MM-DD'),
-                });
-                action(formValues);
+                };
+                action(tempPlant);
+                setFormValues(emptyPlant);
                 onClose();
               }}
             >
