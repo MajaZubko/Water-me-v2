@@ -6,6 +6,8 @@ Plant watering app available here: https://epic-fermat-eebc14.netlify.app
 - [x] Scheduling and rescheduling watering
 - [x] Displaying watering schedule in calendar
 - [x] Small plant encyclopedia
+- [ ] Fertilizing schedule
+- [ ] Summer/winter months division
 - [ ] Apartment plant map
 - [ ] Customizing desing of the app
 
