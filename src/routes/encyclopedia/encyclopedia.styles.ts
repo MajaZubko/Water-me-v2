@@ -10,7 +10,8 @@ export const Container = styled.div`
 `;
 
 export const StyledCard = styled(Card)`
-  min-width: 400px;
+  min-width: 320px;
+  max-width: 90vw;
   margin: 8px 8px;
 `;
 

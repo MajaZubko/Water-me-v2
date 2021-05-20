@@ -33,7 +33,6 @@ export const PlantsList = () => {
       <FormModal
         isOpen={isModalOpen}
         onClose={() => {
-          setModalPlant(emptyPlant);
           setIsModalOpen(false);
         }}
         action={modalMode === 'add' ? addPlant : editPlant}
