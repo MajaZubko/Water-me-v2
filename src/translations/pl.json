@@ -16,5 +16,7 @@
   "waterNeeds": "Potrzeby wodne",
   "lastWatered": "Ostatnie podlewanie",
   "waterNeedsLabel": "Potrzeby wodne (co ile dni)",
-  "enterNextWatering": "Wprowadź nową datę podlewania"
+  "enterNextWatering": "Wprowadź nową datę podlewania",
+  "signUp": "Zarejestruj się",
+  "logIn": "Zaloguj się"
 }

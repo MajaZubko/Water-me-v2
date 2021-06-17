@@ -8,6 +8,8 @@ import { AppComponent as App } from './app.component';
 import { ROUTES } from './app.constants';
 import { AllPlants } from './allPlants';
 import { Encyclopedia } from './encyclopedia';
+import { LogIn } from './logIn';
+import { SignUp } from './signUp';
 //<-- IMPORT ROUTE -->
 
 const Home = asyncComponent(() => import('./home'), 'Home');
@@ -26,6 +28,12 @@ const MatchedLanguageComponent = () => {
         </Route>
         <Route exact path={`${match.path}${ROUTES.encyclopedia}`}>
           <Encyclopedia />
+        </Route>
+        <Route exact path={`${match.path}${ROUTES.logIn}`}>
+          <LogIn />
+        </Route>
+        <Route exact path={`${match.path}${ROUTES.signUp}`}>
+          <SignUp />
         </Route>
         <Route>
           <NotFound />
