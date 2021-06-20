@@ -7,6 +7,7 @@ import { translationMessages } from '../i18n';
 import { GlobalStyle } from '../theme/global';
 import { localesSelectors } from '../modules/locales';
 import { Navbar } from '../shared/components/navbar';
+import { AuthProvider } from '../shared/services/context/AuthContext';
 import { useStartup } from './useStartup';
 import { useLanguageFromParams } from './useLanguageFromParams';
 
@@ -26,16 +27,18 @@ export const AppComponent = ({ children }: AppComponentProps) => {
 
   return (
     <IntlProvider key={language} locale={language} messages={translationMessages[language]}>
-      <HelmetProvider>
-        <Fragment>
-          <FormattedMessage id="pageTitle" defaultMessage="Water me" description="App / Page title">
-            {([pageTitle]: [string]) => <Helmet titleTemplate={`%s - ${pageTitle}`} defaultTitle={pageTitle} />}
-          </FormattedMessage>
-          <Navbar />
-          <GlobalStyle />
-          {React.Children.only(children)}
-        </Fragment>
-      </HelmetProvider>
+      <AuthProvider>
+        <HelmetProvider>
+          <Fragment>
+            <FormattedMessage id="pageTitle" defaultMessage="Water me" description="App / Page title">
+              {([pageTitle]: [string]) => <Helmet titleTemplate={`%s - ${pageTitle}`} defaultTitle={pageTitle} />}
+            </FormattedMessage>
+            <Navbar />
+            <GlobalStyle />
+            {React.Children.only(children)}
+          </Fragment>
+        </HelmetProvider>
+      </AuthProvider>
     </IntlProvider>
   );
 };

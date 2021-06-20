@@ -6,10 +6,12 @@ import { localesSelectors } from '../../../modules/locales';
 import { ROUTES } from '../../../routes/app.constants';
 import { getActiveBreakpoint } from '../../../theme/media';
 import { NavbarLink } from '../../navbarLink';
+import { useAuth } from '../../services/context/AuthContext';
 import { Container, Heading, Logo, LinksSection, MenuIcon } from './navbar.styles';
 
 export const Navbar = () => {
   const breakpoint = getActiveBreakpoint();
+  const { currentUser, logOut } = useAuth();
   const isMobile = breakpoint === 'mobile';
 
   const [activeRoute, setActiveRoute] = useState(window.location.pathname);
@@ -23,6 +25,7 @@ export const Navbar = () => {
     calendar: route(ROUTES.calendar),
     allPlants: route(ROUTES.allPlants),
     encyclopedia: route(ROUTES.encyclopedia),
+    logIn: route(ROUTES.logIn),
   };
 
   const handleLinkClick = () => {
@@ -65,6 +68,15 @@ export const Navbar = () => {
                 description="Plant encyclopedia / Link"
               />
             </NavbarLink>
+            {currentUser ? (
+              <NavbarLink to={PATHS.calendar} onClick={() => logOut()} active={false}>
+                <FormattedMessage id="logOut" defaultMessage="Log out" description="Log out / Button" />
+              </NavbarLink>
+            ) : (
+              <NavbarLink to={PATHS.logIn} onClick={handleLinkClick} active={isActiveRoute(PATHS.logIn)}>
+                <FormattedMessage id="logInLink" defaultMessage="Log in" description="Log in / Link" />
+              </NavbarLink>
+            )}
           </>
         )}
       </LinksSection>
