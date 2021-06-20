@@ -2,29 +2,20 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useIntl } from 'react-intl';
 import { useHistory } from 'react-router';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, firebase } from '../../config/firebase';
-import { Button } from '../../shared/components/button';
+import { Button } from '@material-ui/core';
+import { useAuth } from '../../shared/services/context/AuthContext';
 import { Container } from './logIn.styles';
 
 export const LogIn = () => {
   const intl = useIntl();
   const history = useHistory();
-
-  console.log(intl);
-
-  const [user] = useAuthState(auth);
+  const { currentUser, loginWithGoogle } = useAuth();
 
   useEffect(() => {
-    if (user) {
+    if (currentUser) {
       history.push(`/${intl.locale}/calendar`);
     }
-  }, [user]);
-
-  const loginWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-  };
+  }, [currentUser]);
 
   return (
     <Container>
