@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CardContent } from '@material-ui/core';
-import { SpinningLoader } from '../../shared/components/spinningLoader';
+import { firestore } from '../../config/firebase';
 import {
   Container,
   LatinName,
@@ -11,24 +11,28 @@ import {
   StyledCard,
   WaterNeed,
 } from './encyclopedia.styles';
-import { useGetPlants } from './encyclopedia.queries';
 import { EncyclopediaPlant } from './encyclopedia.types';
 
 export const Encyclopedia = () => {
-  const { data, isFetching }: { data?: EncyclopediaPlant[]; isFetching: boolean } = useGetPlants();
+  const [plants, setPlants] = useState<EncyclopediaPlant[]>([]);
 
-  if (isFetching) {
-    return (
-      <Container>
-        <SpinningLoader />
-      </Container>
-    );
-  }
+  const encyclopediaRef = firestore.collection('encyclopedia');
+  useEffect(() => {
+    encyclopediaRef.onSnapshot((snapshot) => {
+      const encyclopediaPlants = snapshot.docs;
+      const fetchedPlants: any[] | ((prevState: EncyclopediaPlant[]) => EncyclopediaPlant[]) = [];
+      encyclopediaPlants.forEach((plant) => {
+        fetchedPlants.push(plant.data().plant);
+      });
+
+      setPlants(fetchedPlants);
+    });
+  }, []);
 
   return (
     <Container>
-      {!!data &&
-        data.map((plant) => (
+      {!!plants &&
+        plants.map((plant) => (
           <StyledCard key={plant.id}>
             <CardContent>
               <PlantName>{plant.name}</PlantName>

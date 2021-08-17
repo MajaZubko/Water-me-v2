@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { H1 } from '../../../theme/typography';
 import { localesSelectors } from '../../../modules/locales';
 import { ROUTES } from '../../../routes/app.constants';
 import { getActiveBreakpoint } from '../../../theme/media';
 import { NavbarLink } from '../../navbarLink';
-import { useAuth } from '../../services/context/AuthContext';
+import { auth } from '../../../config/firebase';
 import { Container, Heading, Logo, LinksSection, MenuIcon } from './navbar.styles';
 
 export const Navbar = () => {
   const breakpoint = getActiveBreakpoint();
-  const { currentUser, logOut } = useAuth();
+  const [user] = useAuthState(auth);
   const isMobile = breakpoint === 'mobile';
 
   const [activeRoute, setActiveRoute] = useState(window.location.pathname);
@@ -68,8 +69,8 @@ export const Navbar = () => {
                 description="Plant encyclopedia / Link"
               />
             </NavbarLink>
-            {currentUser ? (
-              <NavbarLink to={PATHS.calendar} onClick={() => logOut()} active={false}>
+            {user ? (
+              <NavbarLink to={PATHS.calendar} onClick={auth.signOut} active={false}>
                 <FormattedMessage id="logOut" defaultMessage="Log out" description="Log out / Button" />
               </NavbarLink>
             ) : (

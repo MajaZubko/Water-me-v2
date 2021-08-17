@@ -81,6 +81,7 @@
     "react-test-renderer": "^16.13.1",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
+    "redux-saga-firebase": "^0.15.0",
     "redux-saga-test-plan": "4.0.0-rc.3",
     "regenerator-runtime": "^0.13.3",
     "semver-compare": "^1.0.0",

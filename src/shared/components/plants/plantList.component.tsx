@@ -18,7 +18,7 @@ import { usePlants } from './usePlants.hook';
 import { emptyPlant } from './emptyPlant';
 
 export const PlantsList = () => {
-  const [plants, fetchPlants, editPlant, addPlant, deletePlant] = usePlants();
+  const { plants, fetchPlants, editPlant, addPlant, deletePlant } = usePlants();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState('add');

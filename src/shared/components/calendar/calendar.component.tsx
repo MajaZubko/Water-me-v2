@@ -20,7 +20,7 @@ export const Calendar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPlant, setModalPlant] = useState(emptyPlant);
 
-  const [plants, fetchPlants, editPlant] = usePlants();
+  const { plants, fetchPlants, editPlant } = usePlants();
 
   useEffect(() => {
     fetchPlants();

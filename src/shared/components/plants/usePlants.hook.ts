@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { plantsActions, plantsSelectors } from '../../../modules/plants';
 import { Plant } from '../../../modules/plants/plants.types';
 
-export const usePlants = (): [
-  Plant[],
-  () => void,
-  (plant: Plant) => void,
-  (plant: Plant) => void,
-  (plant: Plant) => void
-] => {
+type usePlantsReturn = {
+  plants: Plant[];
+  fetchPlants: () => void;
+  addPlant: (plant: Plant) => void;
+  deletePlant: (plant: Plant) => void;
+  editPlant: (plant: Plant) => void;
+};
+
+export const usePlants = (): usePlantsReturn => {
   const dispatch = useDispatch();
 
   const plants = useSelector(plantsSelectors.selectPlants);
@@ -18,5 +20,5 @@ export const usePlants = (): [
   const deletePlant = (plant: Plant) => dispatch(plantsActions.deletePlant(plant));
   const editPlant = (plant: Plant) => dispatch(plantsActions.editPlant(plant));
 
-  return [plants, fetchPlants, editPlant, addPlant, deletePlant];
+  return { plants, fetchPlants, editPlant, addPlant, deletePlant };
 };

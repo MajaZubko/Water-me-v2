@@ -1,8 +1,9 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import ReduxSagaFirebase from 'redux-saga-firebase';
 import 'firebase/auth';
 
-firebase.initializeApp({
+const firebaseApp = firebase.initializeApp({
   apiKey: 'AIzaSyCtuf-XzJm9I8TDzshPHlG7lsdIuFIXhUg',
   authDomain: 'water-me-6a5fb.firebaseapp.com',
   projectId: 'water-me-6a5fb',
@@ -14,5 +15,6 @@ firebase.initializeApp({
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
+const reduxSagaFirebase = new ReduxSagaFirebase(firebaseApp);
 
-export { auth, firestore, firebase };
+export { auth, firestore, firebase, reduxSagaFirebase };
